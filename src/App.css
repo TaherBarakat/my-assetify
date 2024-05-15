@@ -1,0 +1,17 @@
+.purple-gradient {
+     background-image: linear-gradient(
+          to left top,
+          /* Angle of the gradient line */ #6b48ff 0%,
+          /* Second color stop, at 50% */ #0a0e3f 100%
+               /* Third color stop, at 100% */
+     );
+}
+
+.black-gradient {
+     background-image: linear-gradient(
+          top to bottom,
+          /* Angle of the gradient line */ #0a0e3f 0%,
+          /* Second color stop, at 50% */ #ffffff 100%
+               /* Third color stop, at 100% */
+     );
+}

@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+     font-family: "NOOR";
+     src: url("assets/fonts/ArbFONTS-AGCBold.ttf");
+     font-weight: bold;
+}
+
+@font-face {
+     font-family: "NOOR";
+     src: url("assets/fonts/ArbFONTS-AGCRegular.ttf");
+     font-weight: normal;
+}
+* {
+     font-family: "NOOR", "Segoe UI", Tahoma;
+}
