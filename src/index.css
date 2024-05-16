@@ -3,16 +3,24 @@
 @tailwind utilities;
 
 @font-face {
-     font-family: "NOOR";
-     src: url("assets/fonts/ArbFONTS-AGCBold.ttf");
-     font-weight: bold;
+  font-family: "NOOR";
+  src: url("assets/fonts/ArbFONTS-AGCBold.ttf");
+  font-weight: bold;
 }
 
 @font-face {
-     font-family: "NOOR";
-     src: url("assets/fonts/ArbFONTS-AGCRegular.ttf");
-     font-weight: normal;
+  font-family: "NOOR";
+  src: url("assets/fonts/ArbFONTS-AGCRegular.ttf");
+  font-weight: normal;
 }
 * {
-     font-family: "NOOR", "Segoe UI", Tahoma;
+  font-family: "NOOR", "Segoe UI", Tahoma;
+}
+
+*::-webkit-scrollbar {
+  @apply w-[3PX] bg-transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-primary-darker;
 }

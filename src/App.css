@@ -1,17 +1,9 @@
-.purple-gradient {
-     background-image: linear-gradient(
-          to left top,
-          /* Angle of the gradient line */ #6b48ff 0%,
-          /* Second color stop, at 50% */ #0a0e3f 100%
-               /* Third color stop, at 100% */
-     );
-}
-
 .black-gradient {
-     background-image: linear-gradient(
-          top to bottom,
-          /* Angle of the gradient line */ #0a0e3f 0%,
-          /* Second color stop, at 50% */ #ffffff 100%
-               /* Third color stop, at 100% */
-     );
+  /* opacity: ; */
+  background-image: url(assets/homeBG.png),
+    linear-gradient(180deg, hsla(235, 73%, 14%, 0.8) 0%, #ffffff00 100%);
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
