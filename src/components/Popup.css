@@ -3,3 +3,18 @@ dialog::backdrop {
   /* background-color: rgb(114, 250, 159); */
   background-image: linear-gradient(to left top, #6b48ff 0%, #0a0e3f 100%);
 }
+
+dialog {
+  background-blend-mode: multiply;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.reg-popup {
+  background-image: url(../assets/popupBG.png),
+    linear-gradient(180deg, #00000085 0%, #00000085 100%);
+}
+
+.signup-popup {
+  background-image: url(../assets/signupBG.png);
+}

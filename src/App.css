@@ -1,9 +1,0 @@
-.black-gradient {
-  /* opacity: ; */
-  background-image: url(assets/homeBG.png),
-    linear-gradient(180deg, hsla(235, 73%, 14%, 0.8) 0%, #ffffff00 100%);
-  background-blend-mode: multiply;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
