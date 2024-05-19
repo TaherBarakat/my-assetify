@@ -9,7 +9,7 @@ export default function SignupForm() {
       </h2>
       <div className="grid grid-cols-2 gap-10">
         <div>
-          <Input>الايميب</Input>
+          <Input>الايميل</Input>
           <Input>اسم المستخدم</Input>
           <Input>رقم الهاتف</Input>
           <Input>كلمة المرور</Input>

@@ -10,7 +10,10 @@ import ProgramsPage from "./pages/ProgramsPage";
 import SalePage from "./pages/SalePage";
 import ErrorPage from "./pages/ErrorPage";
 //-------------routes array
-
+import LoginForm from "./components/Form/LoginForm";
+import SignupForm from "./components/Form/SignupForm";
+import LogoutForm from "./components/Form/LogoutForm";
+import VerifyForm from "./components/Form/VerifyForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +26,11 @@ const router = createBrowserRouter([
       { path: "more", element: <MorePage /> },
       { path: "programs", element: <ProgramsPage /> },
       { path: "sale", element: <SalePage /> },
+      // dddddddddddddddddddd
+      { path: "login", element: <LoginForm /> },
+      { path: "signup", element: <SignupForm /> },
+      { path: "verify", element: <VerifyForm /> },
+      { path: "logout", element: <LogoutForm /> },
     ],
   },
 ]);

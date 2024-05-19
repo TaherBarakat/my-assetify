@@ -1,17 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
 import Popup from "../components/Popup";
-
+import HomePage from "./HomePage";
 export default function RootPage() {
+  const { pathname } = useLocation();
+  console.log(pathname);
   return (
     <>
       <MainNavigation />
-      <Outlet></Outlet>
-
-      {/* <Popup mode={"login"}></Popup> */}
-      {/* <Popup mode={"verify"}></Popup> */}
-      {/* <Popup mode={"logout"}></Popup> */}
-      <Popup mode={"signup"}></Popup>
+      {(["/signup", "/login", "/logout", "/verify"].includes(pathname) && (
+        <>
+          <HomePage></HomePage>
+          <Popup mode={pathname}>
+            <Outlet />
+          </Popup>
+        </>
+      )) || <Outlet></Outlet>}
     </>
   );
 }
