@@ -5,7 +5,6 @@ export default function Input({ children, ...props }) {
     <div className="relative my-9 w-full">
       <input
         {...props}
-        type="text"
         required
         className="block w-full rounded-2xl  border-[1px] border-black px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
       />

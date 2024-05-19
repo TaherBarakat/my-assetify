@@ -4,7 +4,7 @@ import Popup from "../components/Popup";
 import HomePage from "./HomePage";
 export default function RootPage() {
   const { pathname } = useLocation();
-  console.log(pathname);
+  // console.log(pathname);
   return (
     <>
       <MainNavigation />

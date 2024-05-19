@@ -1,10 +1,11 @@
 import ActionButton from "./ActionButton";
 import SocialActionButton from "./SocialActionButton";
 import Input from "./Input";
+import { redirect, Form, Link } from "react-router-dom";
 
 export default function LoginForm() {
   return (
-    <form className="h-full w-full p-8">
+    <Form className="h-full w-full p-8" method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         تسجيل الدخول
       </h2>
@@ -15,23 +16,23 @@ export default function LoginForm() {
         name="password"
         id="password"
         type="password"
-        minlength="10"
+        minLength="10"
         // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
       >
         كلمة المرور
       </Input>
-      <ActionButton secondary type="s">
-        تسجيل دخول
-      </ActionButton>
+      <ActionButton secondary>تسجيل دخول</ActionButton>
       <div className="my-9 flex justify-around text-sm">
         <span>
           {"  "}
           ليس لديك حساب ؟{"  "}
-          <a>انشاء حساب</a>
+          <Link to="/signup" className="underline">
+            انشاء حساب
+          </Link>
           {"  "}
         </span>
         <span>
-          <a>نسيت كلمة المرور</a>
+          <p>نسيت كلمة المرور</p>
         </span>
       </div>
 
@@ -42,10 +43,28 @@ export default function LoginForm() {
       </div>
 
       <div className=" flex h-[20%] items-center justify-between">
-        <SocialActionButton className="w-[30%]">Facebook</SocialActionButton>
-        <SocialActionButton className="w-[30%]">Apple</SocialActionButton>
-        <SocialActionButton className="w-[30%]">Google</SocialActionButton>
+        <SocialActionButton type="button" className="w-[30%]">
+          Facebook
+        </SocialActionButton>
+        <SocialActionButton type="button" className="w-[30%]">
+          Apple
+        </SocialActionButton>
+        <SocialActionButton type="button" className="w-[30%]">
+          Google
+        </SocialActionButton>
       </div>
-    </form>
+    </Form>
   );
+}
+
+// export function action({ request }) {
+//   console.log(request);
+//   redirect("..");
+// }
+
+export async function action({ request }) {
+  const reqData = await request.formData();
+  const data = Object.fromEntries(reqData.entries());
+  console.log(data);
+  return redirect("/");
 }

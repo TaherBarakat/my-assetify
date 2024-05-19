@@ -1,9 +1,10 @@
 import ActionButton from "./ActionButton";
 import { useState, useRef } from "react";
+import { Form, redirect } from "react-router-dom";
 
 export default function VerifyForm() {
   return (
-    <form className="h-full w-full p-8">
+    <Form className="h-full w-full p-8">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         مرحباً بك طاهر{" "}
       </h2>
@@ -17,7 +18,7 @@ export default function VerifyForm() {
         اذا لم يصلك يمكنك اعادة المحاولة بعد 1 د
       </div>
       <ActionButton>إعادة إرسال</ActionButton>
-    </form>
+    </Form>
   );
 }
 
@@ -63,4 +64,11 @@ function VerificationCodeInput() {
       ))}
     </div>
   );
+}
+
+export async function action({ request }) {
+  const reqData = await request.formData();
+  const data = Object.fromEntries(reqData.entries());
+  console.log(data);
+  return redirect("/");
 }

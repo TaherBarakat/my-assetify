@@ -10,10 +10,16 @@ import ProgramsPage from "./pages/ProgramsPage";
 import SalePage from "./pages/SalePage";
 import ErrorPage from "./pages/ErrorPage";
 //-------------routes array
-import LoginForm from "./components/Form/LoginForm";
-import SignupForm from "./components/Form/SignupForm";
-import LogoutForm from "./components/Form/LogoutForm";
-import VerifyForm from "./components/Form/VerifyForm";
+import LoginForm, { action as loginAction } from "./components/Form/LoginForm";
+import SignupForm, {
+  action as signupAction,
+} from "./components/Form/SignupForm";
+import VerifyForm, {
+  action as verifyAction,
+} from "./components/Form/VerifyForm";
+import LogoutForm, {
+  action as logoutAction,
+} from "./components/Form/LogoutForm";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,10 +33,10 @@ const router = createBrowserRouter([
       { path: "programs", element: <ProgramsPage /> },
       { path: "sale", element: <SalePage /> },
       // dddddddddddddddddddd
-      { path: "login", element: <LoginForm /> },
-      { path: "signup", element: <SignupForm /> },
-      { path: "verify", element: <VerifyForm /> },
-      { path: "logout", element: <LogoutForm /> },
+      { path: "login", element: <LoginForm />, action: loginAction },
+      { path: "signup", element: <SignupForm />, action: signupAction },
+      { path: "verify", element: <VerifyForm />, action: verifyAction },
+      { path: "logout", element: <LogoutForm />, action: logoutAction },
     ],
   },
 ]);
