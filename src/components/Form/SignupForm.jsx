@@ -8,7 +8,7 @@ export default function SignupForm() {
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         إنشاء حساب
       </h2>
-      <div className="grid grid-cols-2 gap-10">
+      <div className="grid  grid-cols-1 grid-rows-2 gap-10  md:grid-cols-2 md:grid-rows-1">
         <div>
           <Input id="email" name="email" type="email">
             الايميل
@@ -37,12 +37,12 @@ export default function SignupForm() {
           </FileInput>
           <FileInput name="id" id="id" accept="image/*" size="1000000">
             {" "}
-            اثبات شخصيلة
+            اثبات شخصية
           </FileInput>
           {/* <input name="photograph" type="file" accept="image/*" />
           <input name="id" type="file" accept="image/*" /> */}
           <ActionButton secondary type="submit">
-            تأكيد
+            إنشاء حساب
           </ActionButton>
         </div>
       </div>
