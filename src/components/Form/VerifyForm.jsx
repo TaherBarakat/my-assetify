@@ -2,9 +2,12 @@ import ActionButton from "./ActionButton";
 import { useState, useRef } from "react";
 import { Form, redirect } from "react-router-dom";
 
+import { useContext } from "react";
+import { DummyAuthCtx } from "../../store_/dummyAuthContext";
 export default function VerifyForm() {
+  const { login } = useContext(DummyAuthCtx);
   return (
-    <Form className="h-full w-full p-8">
+    <Form className="h-full w-full p-8" method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         مرحباً بك طاهر{" "}
       </h2>
@@ -13,7 +16,10 @@ export default function VerifyForm() {
       </div>
 
       <VerificationCodeInput />
-      <ActionButton secondary>تأكيد</ActionButton>
+      <ActionButton secondary onClick={login}>
+        {" "}
+        تأكيد
+      </ActionButton>
       <div className="my-9 flex justify-around text-sm">
         اذا لم يصلك يمكنك اعادة المحاولة بعد 1 د
       </div>
@@ -37,13 +43,13 @@ function VerificationCodeInput() {
     });
 
     if (value && index < inputRefs.length - 1) {
-      inputRefs[index + 1].current.focus();
+      inputRefs[verificationCode.length + 1].current.focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
     if (e.key === "Backspace" && !verificationCode[index] && index > 0) {
-      inputRefs[index - 1].current.focus();
+      inputRefs[verificationCode.length - 1].current.focus();
     }
   };
 
@@ -51,6 +57,7 @@ function VerificationCodeInput() {
     <div className="flex w-full items-center justify-center">
       {inputRefs.map((ref, index) => (
         <input
+          placeholder="_"
           key={index}
           ref={ref}
           type="text"
@@ -59,7 +66,7 @@ function VerificationCodeInput() {
           value={verificationCode[index] || ""}
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          className="mx-2 aspect-square w-[10%] rounded border border-gray-300 text-center  focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className={`mx-2  ${index < verificationCode.length ? "bg-slate-300" : ""}  aspect-square w-[10%] rounded-xl border border-gray-300 text-center text-3xl  focus:outline-none focus:ring-2 focus:ring-blue-500`}
         />
       ))}
     </div>

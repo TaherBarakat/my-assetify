@@ -3,7 +3,11 @@ import SocialActionButton from "./SocialActionButton";
 import Input from "./Input";
 import { redirect, Form, Link } from "react-router-dom";
 
+import { useContext } from "react";
+import { DummyAuthCtx } from "../../store_/dummyAuthContext";
+
 export default function LoginForm() {
+  const { login } = useContext(DummyAuthCtx);
   return (
     <Form className="h-full w-full p-8" method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
@@ -21,7 +25,9 @@ export default function LoginForm() {
       >
         كلمة المرور
       </Input>
-      <ActionButton secondary>تسجيل دخول</ActionButton>
+      <ActionButton secondary onClick={login}>
+        تسجيل دخول
+      </ActionButton>
       <div className="my-9 flex justify-around text-sm">
         <span>
           {"  "}

@@ -2,20 +2,23 @@ import { Outlet, useLocation } from "react-router-dom";
 import MainNavigation from "../components/MainNavigation";
 import Popup from "../components/Popup";
 import HomePage from "./HomePage";
+import DummyAuthCtxProvider from "../store_/dummyAuthContext";
+
 export default function RootPage() {
   const { pathname } = useLocation();
-  // console.log(pathname);
   return (
     <>
-      <MainNavigation />
-      {(["/signup", "/login", "/logout", "/verify"].includes(pathname) && (
-        <>
-          <HomePage></HomePage>
-          <Popup mode={pathname}>
-            <Outlet />
-          </Popup>
-        </>
-      )) || <Outlet></Outlet>}
+      <DummyAuthCtxProvider>
+        <MainNavigation />
+        {(["/signup", "/login", "/logout", "/verify"].includes(pathname) && (
+          <>
+            <HomePage></HomePage>
+            <Popup mode={pathname}>
+              <Outlet />
+            </Popup>
+          </>
+        )) || <Outlet></Outlet>}
+      </DummyAuthCtxProvider>
     </>
   );
 }

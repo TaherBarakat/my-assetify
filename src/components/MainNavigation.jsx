@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/logo.svg";
+
+import { useContext } from "react";
+import { DummyAuthCtx } from "../store_/dummyAuthContext";
 export default function MainNavigation() {
+  const { isLogged } = useContext(DummyAuthCtx);
   return (
     <header className=" bg-primary-light ">
       <div className="mx-auto flex h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
@@ -17,19 +21,28 @@ export default function MainNavigation() {
               <MainNavElement to="/programs">
                 برامج الجنسية لدى اسيستفاي
               </MainNavElement>
-              <MainNavElement to="sale"> البيع </MainNavElement>
+              <MainNavElement to="/sale"> البيع </MainNavElement>
               <MainNavElement to="/more"> المزيد </MainNavElement>
             </ul>
           </nav>
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              <NavLink
-                className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
-                to="/login"
-              >
-                سجل الدخول
-              </NavLink>
+              {isLogged ? (
+                <NavLink
+                  className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
+                  to="/logout"
+                >
+                  تسجيل الخروج
+                </NavLink>
+              ) : (
+                <NavLink
+                  className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
+                  to="/login"
+                >
+                  سجل الدخول
+                </NavLink>
+              )}
 
               <NavLink
                 className="text-s hidden rounded-md bg-primary-dark px-5 py-1.5  font-bold text-secondary-accent transition hover:text-teal-600/75 sm:block"

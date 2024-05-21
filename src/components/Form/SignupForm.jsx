@@ -1,7 +1,9 @@
 import ActionButton from "./ActionButton";
 import Input from "./Input";
 import FileInput from "./FileInput";
-import { Form, redirect } from "react-router-dom";
+import SocialActionButton from "./SocialActionButton";
+import { Form, redirect, Link } from "react-router-dom";
+
 export default function SignupForm() {
   return (
     <Form className="h-full w-full px-32 py-8 " method="post">
@@ -44,7 +46,35 @@ export default function SignupForm() {
           <ActionButton secondary type="submit">
             إنشاء حساب
           </ActionButton>
+
+          <div className="my-9 flex justify-around text-sm">
+            <span>
+              {"  "}
+              لديك حساب ؟{"  "}
+              <Link to="/login" className="underline">
+                تسجيل دخول{" "}
+              </Link>
+              {"  "}
+            </span>
+          </div>
         </div>
+      </div>
+      <div className="mt-9 flex items-center ">
+        <div className="h-px flex-grow bg-slate-300"></div>
+        <div className="mx-4 mb-3 font-bold text-slate-300">أو</div>
+        <div className="h-px flex-grow bg-slate-300"></div>
+      </div>
+
+      <div className=" flex h-[20%] items-center justify-center">
+        <SocialActionButton type="button" className="mx-1 w-[20%]">
+          Facebook
+        </SocialActionButton>
+        <SocialActionButton type="button" className="w-[20%]">
+          Apple
+        </SocialActionButton>
+        <SocialActionButton type="button" className="w-[20%]">
+          Google
+        </SocialActionButton>
       </div>
     </Form>
   );
@@ -55,5 +85,5 @@ export async function action({ request }) {
   const reqData = await request.formData();
   const data = Object.fromEntries(reqData.entries());
   console.log(data);
-  return redirect("/");
+  return redirect("/verify");
 }
