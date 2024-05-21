@@ -1,5 +1,6 @@
 import ActionButton from "./ActionButton";
 import Input from "./Input";
+import FileInput from "./FileInput";
 import { Form, redirect } from "react-router-dom";
 export default function SignupForm() {
   return (
@@ -26,8 +27,20 @@ export default function SignupForm() {
           </Input>
         </div>
         <div>
-          <input name="photograph" type="file" accept="image/*" />
-          <input name="id" type="file" accept="image/*" />
+          <FileInput
+            name="photograph"
+            id="photograph"
+            accept="image/*"
+            size="2000000"
+          >
+            الصورة الشخصية
+          </FileInput>
+          <FileInput name="id" id="id" accept="image/*" size="1000000">
+            {" "}
+            اثبات شخصيلة
+          </FileInput>
+          {/* <input name="photograph" type="file" accept="image/*" />
+          <input name="id" type="file" accept="image/*" /> */}
           <ActionButton secondary type="submit">
             تأكيد
           </ActionButton>
