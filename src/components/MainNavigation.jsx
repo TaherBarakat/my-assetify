@@ -41,7 +41,7 @@ export default function MainNavigation() {
             <div className="sm:flex sm:gap-4">
               {isLogged ? (
                 <NavLink
-                  className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
+                  className="block rounded-md border border-primary-dark px-5 py-1.5 text-xs font-bold text-primary-dark transition hover:bg-primary-dark  hover:text-primary-light md:text-sm  "
                   to="/my-assetify/logout"
                 >
                   تسجيل الخروج
