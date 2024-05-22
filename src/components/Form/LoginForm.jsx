@@ -9,7 +9,7 @@ import { DummyAuthCtx } from "../../store_/dummyAuthContext";
 export default function LoginForm() {
   const { login } = useContext(DummyAuthCtx);
   return (
-    <Form className="h-full w-full p-8" method="post">
+    <Form className="h-full w-full px-8  " method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         تسجيل الدخول
       </h2>

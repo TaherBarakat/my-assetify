@@ -8,7 +8,7 @@ export default function VerifyForm() {
   const { login } = useContext(DummyAuthCtx);
 
   return (
-    <Form className="h-full w-full p-8" method="post">
+    <Form className="h-full w-full px-8 " method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         مرحباً بك طاهر{" "}
       </h2>
@@ -58,6 +58,7 @@ function VerificationCodeInput() {
     <div className="flex w-full items-center justify-center">
       {inputRefs.map((ref, index) => (
         <input
+          required
           placeholder="_"
           key={index}
           ref={ref}
@@ -67,7 +68,7 @@ function VerificationCodeInput() {
           value={verificationCode[index] || ""}
           onChange={(e) => handleChange(e, index)}
           onKeyDown={(e) => handleKeyDown(e, index)}
-          className={`mx-2  ${index < verificationCode.length ? "bg-slate-300" : ""}  aspect-square w-[10%] rounded-xl border border-gray-300 text-center text-3xl  focus:outline-none focus:ring-2 focus:ring-blue-500`}
+          className={`mx-2  ${index < verificationCode.length ? "bg-slate-300" : ""}   aspect-square w-[12%] rounded-xl  border border-gray-300 text-center text-3xl focus:outline-none  focus:ring-2 focus:ring-blue-500 md:w-[15%]`}
         />
       ))}
     </div>

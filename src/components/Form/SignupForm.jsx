@@ -6,11 +6,11 @@ import { Form, redirect, Link } from "react-router-dom";
 
 export default function SignupForm() {
   return (
-    <Form className="h-full w-full px-32 py-8 " method="post">
+    <Form className="h-full w-full  px-8 md:px-48 " method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         إنشاء حساب
       </h2>
-      <div className="grid  grid-cols-1 grid-rows-2 gap-10  md:grid-cols-2 md:grid-rows-1">
+      <div className="grid  grid-cols-1 grid-rows-2 gap-1 md:grid-cols-2  md:grid-rows-1 md:gap-14">
         <div>
           <Input id="email" name="email" type="email">
             الايميل
