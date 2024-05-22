@@ -16,7 +16,7 @@ export default function MainNavigation() {
   return (
     <header className=" bg-primary-light ">
       <div className="mx-auto flex h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
-        <NavLink className="block text-teal-600" to="/">
+        <NavLink className="block text-teal-600" to="/my-assetify">
           <span className="sr-only">Home</span>
           <img className="h-8" src={Logo}></img>
         </NavLink>
@@ -24,13 +24,16 @@ export default function MainNavigation() {
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
-              <MainNavElement to="assets"> العقارات </MainNavElement>
-              <MainNavElement to="about"> حول </MainNavElement>
+              <MainNavElement to="/my-assetify/assets">
+                {" "}
+                العقارات{" "}
+              </MainNavElement>
+              <MainNavElement to="/my-assetify/about"> حول </MainNavElement>
               <MainNavElement to="programs">
                 برامج الجنسية لدى اسيستفاي
               </MainNavElement>
-              <MainNavElement to="sale"> البيع </MainNavElement>
-              <MainNavElement to="more"> المزيد </MainNavElement>
+              <MainNavElement to="/my-assetify/sale"> البيع </MainNavElement>
+              <MainNavElement to="/my-assetify/more"> المزيد </MainNavElement>
             </ul>
           </nav>
 
@@ -39,14 +42,14 @@ export default function MainNavigation() {
               {isLogged ? (
                 <NavLink
                   className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
-                  to="/logout"
+                  to="/my-assetify/logout"
                 >
                   تسجيل الخروج
                 </NavLink>
               ) : (
                 <NavLink
                   className="block rounded-md border border-primary-dark px-5 py-1.5 text-xs font-bold  text-primary-dark transition hover:bg-primary-dark hover:text-primary-light   md:text-sm  "
-                  to="/login"
+                  to="/my-assetify/login"
                 >
                   سجل الدخول
                 </NavLink>
@@ -54,7 +57,7 @@ export default function MainNavigation() {
 
               <NavLink
                 className="text-s hidden rounded-md bg-primary-dark px-5 py-1.5  font-bold text-secondary-accent transition hover:text-teal-600/75 sm:block"
-                to="/start"
+                to="/my-assetify/start"
               >
                 ابدأ
               </NavLink>
@@ -91,22 +94,22 @@ export default function MainNavigation() {
               <li onClick={handleClick} className="text-4xl">
                 &times;
               </li>
-              <MainNavElement onClick={handleClick} to="/assets">
+              <MainNavElement onClick={handleClick} to="/my-assetify/assets">
                 {" "}
                 العقارات{" "}
               </MainNavElement>
-              <MainNavElement onClick={handleClick} to="/about">
+              <MainNavElement onClick={handleClick} to="/my-assetify/about">
                 {" "}
                 حول{" "}
               </MainNavElement>
-              <MainNavElement onClick={handleClick} to="/programs">
+              <MainNavElement onClick={handleClick} to="/my-assetify/programs">
                 برامج الجنسية لدى اسيستفاي
               </MainNavElement>
-              <MainNavElement onClick={handleClick} to="/sale">
+              <MainNavElement onClick={handleClick} to="/my-assetify/sale">
                 {" "}
                 البيع{" "}
               </MainNavElement>
-              <MainNavElement onClick={handleClick} to="/more">
+              <MainNavElement onClick={handleClick} to="/my-assetify/more">
                 {" "}
                 المزيد{" "}
               </MainNavElement>

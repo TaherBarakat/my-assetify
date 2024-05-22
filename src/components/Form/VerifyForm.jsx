@@ -79,5 +79,5 @@ export async function action({ request }) {
   const reqData = await request.formData();
   const data = Object.fromEntries(reqData.entries());
   console.log(data);
-  return redirect("/");
+  return redirect("/my-assetify");
 }

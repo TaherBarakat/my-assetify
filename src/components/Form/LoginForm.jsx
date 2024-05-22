@@ -32,7 +32,7 @@ export default function LoginForm() {
         <span>
           {"  "}
           ليس لديك حساب ؟{"  "}
-          <Link to="/signup" className="underline">
+          <Link to="/my-assetify/signup" className="underline">
             انشاء حساب
           </Link>
           {"  "}
@@ -72,5 +72,5 @@ export async function action({ request }) {
   const reqData = await request.formData();
   const data = Object.fromEntries(reqData.entries());
   console.log(data);
-  return redirect("/");
+  return redirect("/my-assetify");
 }

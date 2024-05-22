@@ -10,7 +10,12 @@ export default function RootPage() {
     <>
       <DummyAuthCtxProvider>
         <MainNavigation />
-        {(["/signup", "/login", "/logout", "/verify"].includes(pathname) && (
+        {([
+          "/my-assetify/signup",
+          "/my-assetify/login",
+          "/my-assetify/logout",
+          "/my-assetify/verify",
+        ].includes(pathname) && (
           <>
             <HomePage></HomePage>
             <Popup mode={pathname}>

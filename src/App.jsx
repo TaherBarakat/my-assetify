@@ -24,7 +24,7 @@ import LogoutForm, {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/my-assetify",
     element: <RootPage />,
     errorElement: <ErrorPage />,
     children: [

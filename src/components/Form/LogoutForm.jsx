@@ -20,5 +20,5 @@ export default function LogoutForm() {
 }
 
 export async function action({ request }) {
-  return redirect("/");
+  return redirect("/my-assetify");
 }

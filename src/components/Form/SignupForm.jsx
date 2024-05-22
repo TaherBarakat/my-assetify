@@ -51,7 +51,7 @@ export default function SignupForm() {
             <span>
               {"  "}
               لديك حساب ؟{"  "}
-              <Link to="/login" className="underline">
+              <Link to="/my-assetify/login" className="underline">
                 تسجيل دخول{" "}
               </Link>
               {"  "}
