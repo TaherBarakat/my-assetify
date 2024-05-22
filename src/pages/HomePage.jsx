@@ -20,7 +20,7 @@ export default function HomePage() {
 
       {/* xxxxxxxxxxxxxxxxxx */}
 
-      <section className=" flex  h-[35vh] items-start justify-center bg-primary-darker p-10">
+      <section className=" flex  h-screen items-start justify-center bg-primary-darker p-10">
         <div className="flex flex-col items-center justify-center md:w-[60%] ">
           <div className="container m-5 text-center text-4xl  text-primary-lighter ">
             قم بالإرتقاء تلقائياً إلى فئة Assetify +{" "}

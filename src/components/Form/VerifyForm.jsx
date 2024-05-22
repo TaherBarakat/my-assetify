@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { DummyAuthCtx } from "../../store_/dummyAuthContext";
 export default function VerifyForm() {
   const { login } = useContext(DummyAuthCtx);
+
   return (
     <Form className="h-full w-full p-8" method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">

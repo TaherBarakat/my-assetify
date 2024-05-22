@@ -1,9 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import Logo from "../assets/logo.svg";
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DummyAuthCtx } from "../store_/dummyAuthContext";
 export default function MainNavigation() {
+  const [nav, setNav] = useState(false);
+  const handleClick = () => {
+    setNav(!nav);
+
+    console.log(nav);
+  };
+
   const { isLogged } = useContext(DummyAuthCtx);
   return (
     <header className=" bg-primary-light ">
@@ -53,6 +60,7 @@ export default function MainNavigation() {
             </div>
 
             <button
+              onClick={handleClick}
               id="hamburger-menu"
               className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden"
             >
@@ -72,6 +80,36 @@ export default function MainNavigation() {
                 />
               </svg>
             </button>
+            <ul
+              className={
+                !nav
+                  ? "hidden"
+                  : "fixed left-0 top-0 flex h-screen w-full flex-col items-center justify-between bg-primary-light py-24 "
+              }
+            >
+              <li onClick={handleClick} className="text-4xl">
+                &times;
+              </li>
+              <MainNavElement onClick={handleClick} to="/assets">
+                {" "}
+                العقارات{" "}
+              </MainNavElement>
+              <MainNavElement onClick={handleClick} to="/about">
+                {" "}
+                حول{" "}
+              </MainNavElement>
+              <MainNavElement onClick={handleClick} to="/programs">
+                برامج الجنسية لدى اسيستفاي
+              </MainNavElement>
+              <MainNavElement onClick={handleClick} to="/sale">
+                {" "}
+                البيع{" "}
+              </MainNavElement>
+              <MainNavElement onClick={handleClick} to="/more">
+                {" "}
+                المزيد{" "}
+              </MainNavElement>
+            </ul>
           </div>
         </div>
       </div>
@@ -79,9 +117,12 @@ export default function MainNavigation() {
   );
 }
 
-function MainNavElement({ to, children }) {
+function MainNavElement({ to, children, onClick }) {
   return (
-    <li className="text-xl text-primary-dark  transition hover:text-primary-darker">
+    <li
+      onClick={onClick}
+      className="text-xl text-primary-dark  transition hover:text-primary-darker"
+    >
       <NavLink
         className={({ isActive }) => (isActive ? "  font-bold" : "")}
         to={to}
