@@ -7,7 +7,6 @@ export default function MainNavigation() {
   const { isLogged } = useContext(DummyAuthCtx);
   const [nav, setNav] = useState(false);
   // const isLogged = false;
-  console.log(isLogged);
   const handleClick = () => {
     setNav(!nav);
 
@@ -25,13 +24,13 @@ export default function MainNavigation() {
         <div className="flex flex-1 items-center justify-end md:justify-between">
           <nav aria-label="Global" className="hidden md:block">
             <ul className="flex items-center gap-6 text-sm">
-              <MainNavElement to="/assets"> العقارات </MainNavElement>
-              <MainNavElement to="/about"> حول </MainNavElement>
-              <MainNavElement to="/programs">
+              <MainNavElement to="assets"> العقارات </MainNavElement>
+              <MainNavElement to="about"> حول </MainNavElement>
+              <MainNavElement to="programs">
                 برامج الجنسية لدى اسيستفاي
               </MainNavElement>
-              <MainNavElement to="/sale"> البيع </MainNavElement>
-              <MainNavElement to="/more"> المزيد </MainNavElement>
+              <MainNavElement to="sale"> البيع </MainNavElement>
+              <MainNavElement to="more"> المزيد </MainNavElement>
             </ul>
           </nav>
 
@@ -46,7 +45,7 @@ export default function MainNavigation() {
                 </NavLink>
               ) : (
                 <NavLink
-                  className="text-s block rounded-md border border-primary-dark px-5 py-1.5  font-bold text-primary-dark transition hover:bg-primary-dark   hover:text-primary-light  "
+                  className="block rounded-md border border-primary-dark px-5 py-1.5 text-xs font-bold  text-primary-dark transition hover:bg-primary-dark hover:text-primary-light   md:text-sm  "
                   to="/login"
                 >
                   سجل الدخول
