@@ -4,14 +4,16 @@ import Logo from "../assets/logo.svg";
 import { useContext, useState } from "react";
 import { DummyAuthCtx } from "../store_/dummyAuthContext";
 export default function MainNavigation() {
+  const { isLogged } = useContext(DummyAuthCtx);
   const [nav, setNav] = useState(false);
+  // const isLogged = false;
+  console.log(isLogged);
   const handleClick = () => {
     setNav(!nav);
 
     console.log(nav);
   };
 
-  const { isLogged } = useContext(DummyAuthCtx);
   return (
     <header className=" bg-primary-light ">
       <div className="mx-auto flex h-20 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
