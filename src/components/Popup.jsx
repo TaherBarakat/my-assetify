@@ -1,9 +1,7 @@
 import "./Popup.css";
-import { useRef } from "react";
-
-import { useEffect } from "react";
-
+import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export default function Popup({ mode, children }) {
   const nav = useNavigate();
@@ -27,11 +25,16 @@ export default function Popup({ mode, children }) {
       document.removeEventListener("keydown", handleEscKey);
     };
   }, [nav]);
+
   function handleClose() {
     nav("/my-assetify");
   }
   return (
-    <dialog
+    <motion.dialog
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      exit={{ scale: 0 }}
+      transition={{ duration: 0.5 }}
       ref={dialog}
       className={`${mode === "/my-assetify/signup" ? "signup-popup" : "reg-popup "} min-h-[300px] w-[90vw] rounded-2xl shadow-[0px_0px_15px_#ffffff67] outline-none ${mode === "/my-assetify/signup" ? "" : "md:w-[45%] "}`}
     >
@@ -44,6 +47,6 @@ export default function Popup({ mode, children }) {
         </p>{" "}
         {children}
       </div>
-    </dialog>
+    </motion.dialog>
   );
 }
