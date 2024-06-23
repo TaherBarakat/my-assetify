@@ -13,6 +13,9 @@ export default function ErrorPage() {
     title = "Not found!";
     message = "Could not find resource or page.";
   }
+  console.log(error);
+  console.log(error);
+  console.log(error);
 
   return (
     <>

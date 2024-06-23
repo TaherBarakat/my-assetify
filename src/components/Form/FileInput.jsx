@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Upload from "../../assets/icons/upload.svg";
 export default function FileInput({ children, ...props }) {
   const fileInputRef = useRef();
-  const [fileInputValue, SetFileInputValue] = useState("");
+  const [fileInputValue, SetFileInputValue] = useState(null);
   const [isInDropZone, setIsInDropZone] = useState(false);
 
   const { id, size } = props;
@@ -33,15 +33,15 @@ export default function FileInput({ children, ...props }) {
 
     if (files) {
       fileInputRef.current.files = files;
-      console.log(fileInputRef.current.value);
-      SetFileInputValue(fileInputRef.current.value);
+      console.log(fileInputRef.current.files[0]);
+      SetFileInputValue(fileInputRef.current.files[0]);
     }
     setIsInDropZone(false);
   }
 
   function handleChange() {
-    console.log(fileInputRef.current.value);
-    SetFileInputValue(fileInputRef.current.value);
+    console.log(fileInputRef.current.files[0]);
+    SetFileInputValue(fileInputRef.current.files[0]);
   }
 
   function handleClick() {
@@ -60,7 +60,7 @@ export default function FileInput({ children, ...props }) {
       <input
         {...props}
         ref={fileInputRef}
-        //   value={fileInputValue}
+        // value={fileInputValue.file[0]}
         onChange={handleChange}
         type="file"
         required
@@ -68,7 +68,7 @@ export default function FileInput({ children, ...props }) {
       />
       {isInDropZone && <p>افلت الملف هنا</p>}
 
-      {(fileInputValue === "" && !isInDropZone && (
+      {(fileInputValue === null && !isInDropZone && (
         <div className="grow-1 flex h-full w-full flex-col items-stretch   ">
           <div className="flex grow items-center justify-between">
             {" "}
@@ -77,7 +77,7 @@ export default function FileInput({ children, ...props }) {
           </div>{" "}
           <p className=" text-slate-500 ">الحجم الاقصى: {size / 10 ** 6}MB</p>
         </div>
-      )) || <p>{fileInputValue}</p>}
+      )) || <p>{fileInputValue.name}</p>}
 
       <label
         htmlFor={id}
