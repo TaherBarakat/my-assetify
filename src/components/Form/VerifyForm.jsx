@@ -1,28 +1,30 @@
 import ActionButton from "./ActionButton";
 import { useState, useRef } from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, json, redirect, useActionData } from "react-router-dom";
 
 import { useContext } from "react";
 import { DummyAuthCtx } from "../../store_/dummyAuthContext";
 export default function VerifyForm() {
+  const data = useActionData();
   const [reSendDuration, setReSendDuration] = useState(10);
   // const { login } = useContext(DummyAuthCtx);
-
+  console.log(data);
   useState(() => {
-    const reSendTimeOut = setTimeout(() => {
-      const reSendTimeInterval = setInterval(() => {
-        setReSendDuration((prev) => {
-          if (prev > 0) return prev - 1;
-          else return 0;
-        });
-      }, 1000);
+    const reSendTimeInterval = setInterval(() => {
+      setReSendDuration((prev) => {
+        if (prev > 0) return prev - 1;
+        else return 0;
+      });
+    }, 1000);
 
-      if (reSendDuration === 0) clearInterval(reSendTimeInterval);
-    }, reSendDuration * 100);
+    const reSendTimeOut = setTimeout(() => {
+      clearTimeout(reSendTimeInterval);
+    }, reSendDuration * 1000);
     return () => {
       clearTimeout(reSendTimeOut);
     };
   }, []);
+
   return (
     <Form className="h-full w-full px-8 " method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
@@ -40,9 +42,14 @@ export default function VerifyForm() {
         {" "}
         تأكيد
       </ActionButton>
-      <div className="my-9 flex justify-around text-sm">
-        اذا لم يصلك يمكنك اعادة المحاولة بعد {reSendDuration} ثانية
-      </div>
+      {reSendDuration > 0 && (
+        <div className="my-9 flex justify-around text-sm">
+          اذا لم يصلك يمكنك اعادة المحاولة بعد {reSendDuration} ثانية
+        </div>
+      )}
+      {data && !data.status && (
+        <div className="my-9 flex justify-around text-sm">{data.message}</div>
+      )}
 
       <ActionButton disabled={reSendDuration > 0}>إعادة إرسال</ActionButton>
     </Form>
@@ -75,15 +82,15 @@ function VerificationCodeInput() {
   };
 
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="flex w-full flex-row-reverse items-center justify-center ">
       {inputRefs.map((ref, index) => (
         <input
+          name={index}
           required
           placeholder="_"
           key={index}
           ref={ref}
           type="text"
-          pattern="[0-9]*"
           maxLength={1}
           value={verificationCode[index] || ""}
           onChange={(e) => handleChange(e, index)}
@@ -97,7 +104,17 @@ function VerificationCodeInput() {
 
 export async function action({ request }) {
   const reqData = await request.formData();
-  const data = Object.fromEntries(reqData.entries());
-  console.log(data);
-  return redirect("/my-assetify");
+  const code = Object.values(Object.fromEntries(reqData.entries())).join("");
+  const formData = new FormData();
+  formData.append("code", code);
+  console.log(code);
+  const response = await fetch(
+    "https://task5-toleen-falion.trainees-mad-s.com/api/auth/verifyEemail",
+    { method: "POST", body: formData },
+  );
+
+  if (response.status === 422 || response.status === 404) return response;
+  if (!response.oj) throw json({ title: "c", message: "da" });
+
+  redirect("/my-assetify");
 }
