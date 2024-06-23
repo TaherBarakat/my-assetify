@@ -5,8 +5,24 @@ import { Form, redirect } from "react-router-dom";
 import { useContext } from "react";
 import { DummyAuthCtx } from "../../store_/dummyAuthContext";
 export default function VerifyForm() {
-  const { login } = useContext(DummyAuthCtx);
+  const [reSendDuration, setReSendDuration] = useState(10);
+  // const { login } = useContext(DummyAuthCtx);
 
+  useState(() => {
+    const reSendTimeOut = setTimeout(() => {
+      const reSendTimeInterval = setInterval(() => {
+        setReSendDuration((prev) => {
+          if (prev > 0) return prev - 1;
+          else return 0;
+        });
+      }, 1000);
+
+      if (reSendDuration === 0) clearInterval(reSendTimeInterval);
+    }, reSendDuration * 100);
+    return () => {
+      clearTimeout(reSendTimeOut);
+    };
+  }, []);
   return (
     <Form className="h-full w-full px-8 " method="post">
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
@@ -17,14 +33,18 @@ export default function VerifyForm() {
       </div>
 
       <VerificationCodeInput />
-      <ActionButton secondary onClick={login}>
+      <ActionButton
+        secondary
+        // onClick={login}
+      >
         {" "}
         تأكيد
       </ActionButton>
       <div className="my-9 flex justify-around text-sm">
-        اذا لم يصلك يمكنك اعادة المحاولة بعد 1 د
+        اذا لم يصلك يمكنك اعادة المحاولة بعد {reSendDuration} ثانية
       </div>
-      <ActionButton>إعادة إرسال</ActionButton>
+
+      <ActionButton disabled={reSendDuration > 0}>إعادة إرسال</ActionButton>
     </Form>
   );
 }
