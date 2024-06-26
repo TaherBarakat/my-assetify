@@ -2,10 +2,18 @@ import ActionButton from "./ActionButton";
 import Input from "./Input";
 import FileInput from "./FileInput";
 import SocialActionButton from "./SocialActionButton";
-import { Form, redirect, Link, useNavigation } from "react-router-dom";
+import {
+  Form,
+  redirect,
+  Link,
+  useNavigation,
+  json,
+  useActionData,
+} from "react-router-dom";
 
 export default function SignupForm() {
   const { state } = useNavigation();
+  const data = useActionData();
   return (
     <Form
       className="h-full w-full  px-8 md:px-48 "
@@ -42,6 +50,13 @@ export default function SignupForm() {
           >
             تأكيد كلمة المرور
           </Input>
+          {data && (
+            <ul>
+              {data.errors.map((err) => (
+                <li key={err}> {err}</li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <div>
@@ -123,15 +138,10 @@ export async function action({ request }) {
       body: reqData,
     },
   );
-  const responseData = await response.json();
-  console.log(response);
-  console.log(responseData);
+  // const responseData = await response.json();
 
-  if (responseData.status === true) {
-    console.log("redirected");
-    return redirect("/my-assetify/verify");
-  } else {
-    console.log(responseData);
-    return null;
-  }
+  if (response.status === 422) return response;
+  else if (!response.ok)
+    throw json({ title: "error", message: response.status });
+  else return redirect("/my-assetify/verify");
 }
