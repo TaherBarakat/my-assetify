@@ -1,11 +1,17 @@
-import { NavLink, Link } from "react-router-dom";
+import {
+  NavLink,
+  Link,
+  useLoaderData,
+  useRouteLoaderData,
+} from "react-router-dom";
 import Logo from "../assets/logo.svg";
 
 import { useContext, useState } from "react";
-import { DummyAuthCtx } from "../store_/dummyAuthContext";
+// import { DummyAuthCtx } from "../store_/dummyAuthContext";
 export default function MainNavigation() {
-  const { isLogged } = useContext(DummyAuthCtx);
+  // const { isLogged } = useContext(DummyAuthCtx);
   const [nav, setNav] = useState(false);
+  const token = useRouteLoaderData("root");
   // const isLogged = false;
   const handleClick = () => {
     setNav(!nav);
@@ -39,7 +45,7 @@ export default function MainNavigation() {
 
           <div className="flex items-center gap-4">
             <div className="sm:flex sm:gap-4">
-              {isLogged ? (
+              {token ? (
                 <NavLink
                   className="block rounded-md border border-primary-dark px-5 py-1.5 text-xs font-bold text-primary-dark transition hover:bg-primary-dark  hover:text-primary-light md:text-sm  "
                   to="/my-assetify/logout"

@@ -9,6 +9,7 @@ import MorePage from "./pages/MorePage";
 import ProgramsPage from "./pages/ProgramsPage";
 import SalePage from "./pages/SalePage";
 import ErrorPage from "./pages/ErrorPage";
+import { tokenLoader } from "./utils/auth";
 //-------------routes array
 import LoginForm, { action as loginAction } from "./components/Form/LoginForm";
 import SignupForm, {
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
     path: "/my-assetify",
     element: <RootPage />,
     errorElement: <ErrorPage />,
+    id: "root",
+    loader: tokenLoader,
     children: [
       { index: true, element: <HomePage /> },
       { path: "assets", element: <AssetsPage /> },
