@@ -48,9 +48,7 @@ export default function VerifyForm() {
         <div className="my-9 flex justify-around text-sm">
           لقد تم ارسال الى taher@gmail.com
         </div>
-
         <VerificationCodeInput />
-
         {reSendDuration > 0 && (
           <div className="my-7 flex justify-around text-sm">
             اذا لم يصلك يمكنك اعادة المحاولة بعد {reSendDuration} ثانية
