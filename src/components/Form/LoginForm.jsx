@@ -8,11 +8,10 @@ export default function LoginForm() {
 
   return (
     <Form className="h-full w-full px-8  " method="post">
-      DONGONGA23@gmail.COM
       <h2 className="text-center text-2xl font-bold text-primary-darker ">
         تسجيل الدخول
       </h2>
-      1231230011
+
       <Input name="email" id="email" type="email">
         الايميل
       </Input>
