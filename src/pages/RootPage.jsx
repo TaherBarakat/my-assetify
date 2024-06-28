@@ -3,9 +3,22 @@ import MainNavigation from "../components/MainNavigation";
 import Popup from "../components/Popup";
 import HomePage from "./HomePage";
 import DummyAuthCtxProvider from "../store_/dummyAuthContext";
+import { useEffect } from "react";
+import { getAuthToken, setRefreshTokenTimer } from "../utils/auth";
 
 export default function RootPage() {
   const { pathname } = useLocation();
+  const token = getAuthToken();
+
+  useEffect(() => {
+    console.log("rootUseEffect");
+    let timer;
+    if (getAuthToken()) {
+      timer = setRefreshTokenTimer();
+    }
+
+    return () => clearInterval(timer);
+  }, [token]);
   return (
     <>
       <DummyAuthCtxProvider>
